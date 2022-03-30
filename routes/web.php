@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'homePage'])->name('home');
+Route::get('/categories/{slug}', [PageController::class, 'categoryPage'])->name('category');
+Route::get('/recipes/{slug}', [PageController::class, 'singleRecipePage'])->name('single_recipe');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

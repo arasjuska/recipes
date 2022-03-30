@@ -6,7 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Recipe extends Model
+class Category extends Model
 {
     use HasFactory, Sluggable;
 
@@ -19,9 +19,9 @@ class Recipe extends Model
         ];
     }
 
-    public function category()
+    public function recipes()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(Recipe::class);
     }
 
     public function getRouteKeyName()
