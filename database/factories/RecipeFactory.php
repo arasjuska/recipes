@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,12 +19,14 @@ class RecipeFactory extends Factory
     public function definition()
     {
         $categories = Category::pluck('id')->toArray();
+        $users = User::pluck('id')->toArray();
 
         return [
             'title' => $this->faker->words(3, true),
             'description' => $this->faker->paragraph(),
             'cover' => $this->faker->imageUrl,
-            'category_id' => $this->faker->randomElement($categories)
+            'category_id' => $this->faker->randomElement($categories),
+            'user_id' => $this->faker->randomElement($users)
         ];
     }
 }

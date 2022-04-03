@@ -24,7 +24,7 @@
                     <li>
                         <div x-data="{dropdownMenu: false}">
                             <button @click="dropdownMenu = ! dropdownMenu" class="flex items-center">
-                                <span>{{ auth()->user()->email }}</span>
+                                <span>{{ auth()->user()->name }}</span>
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -43,7 +43,7 @@
                                     <li class="hover:text-amber-500">
                                         <form method="post" action="{{ route('logout') }}">
                                             @csrf
-                                            <button type="submit">Logout</button>
+                                            <button type="submit">{{ __('Logout') }}</button>
                                         </form>
                                     </li>
                                 </ul>
