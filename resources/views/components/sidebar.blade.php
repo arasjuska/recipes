@@ -23,28 +23,24 @@
         <ul>
             @foreach($popular_recipes as $recipe)
                 <li class="my-4">
-                    <div class="grid grid-cols-1 grid-cols-3 md:gap-4">
+                    <div class="grid grid-cols-3 md:gap-4">
                         <div class="col-span-3 md:col-span-1">
                             <div class="rounded-md overflow-hidden">
                                 <img src="{{ $recipe->cover }}" alt="{{ $recipe->title }}" class="w-full h-40 md:h-20 object-cover">
                             </div>
                         </div>
                         <div class="col-span-6 md:col-span-2 py-2">
-                            <div>
-                                {{ $recipe->title }}
+                            <div class="mb-1">
+                                <h3 class="hover:text-gray-500">
+                                    <a href="{{ route('single_recipe', $recipe->slug) }}">
+                                        {{ $recipe->title }}
+                                    </a>
+                                </h3>
                             </div>
-                            <div class="text-xs">
-                                {{ $recipe->category->title }}
-                            </div>
-                            <div class="flex space-x-3 text-amber-500 text-xs">
-                                <div class="flex space-x-1">
-                                    <span><i class="fa-solid fa-heart"></i></span>
-                                    <span>10</span>
-                                </div>
-                                <div class="flex space-x-1">
-                                    <span><i class="fa-solid fa-message"></i></span>
-                                    <span>12</span>
-                                </div>
+                            <div class="text-gray-500 hover:text-amber-500 text-sm">
+                                <a href="{{ route('category', $recipe->category->slug) }}">
+                                    {{ $recipe->category->title }}
+                                </a>
                             </div>
                         </div>
                     </div>

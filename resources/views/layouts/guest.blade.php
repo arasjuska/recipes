@@ -15,7 +15,7 @@
 </head>
 <body x-data="{scrolledFromTop: false}"
       @scroll.window="window.pageYOffset > 60 ? scrolledFromTop = true : scrolledFromTop = false"
-      class="antialiased">
+      class="antialiased text-gray-700">
     <div class="bg-amber-500 w-full fixed">
         <header class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8 transition-all duration-200"
                 :class="{'py-5': !scrolledFromTop, 'py-3': scrolledFromTop}">

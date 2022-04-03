@@ -14,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Guest routes
 Route::get('/', [PageController::class, 'homePage'])->name('home');
 Route::get('/categories/{slug}', [PageController::class, 'categoryPage'])->name('category');
 Route::get('/recipes/{slug}', [PageController::class, 'singleRecipePage'])->name('single_recipe');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Auth routes
+Route::group(['middleware' => 'auth'], function () {
 
-require __DIR__.'/auth.php';
+    // User routes
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+require __DIR__ . '/auth.php';
